@@ -16,7 +16,8 @@ function App() {
       id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
       completed: false,
     };
-    setTodoList([...todoList, task]);
+    setTodoList([...todoList, task]),
+	setNewTask("");
   };
 
   const deleteTask = (id) => {
@@ -42,8 +43,8 @@ function App() {
   return (
     <div id="main">
       <h1>Todo App</h1>
-      <textarea id="task" placeholder="type task" onChange={handleChange} />
-      <button id="btn" onClick={addTask}>
+      <textarea id="task" value={newTask} placeholder="type task" onChange={handleChange} />
+      <button id="btn" onClick={addTask} disabled={newTask === "" ? true : false}>
         Add
       </button>
       <div >
